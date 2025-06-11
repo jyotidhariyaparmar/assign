@@ -20,7 +20,7 @@ def build_encoding(text):
                 chain.append(hex(nibble)[2:])
                 if temp == 0:
                     break
-            # Build code: 'f' repeated len(chain) times + chain nibbles reversed
+            
             code = 'f' * len(chain) + chain[-1]
             for c in reversed(chain[:-1]):
                 code += c
@@ -58,7 +58,7 @@ def decompress(encoded, decoding):
                 i += 1
             num_fs = i - start  # number of f's
             
-            # After 'f's expect exactly num_fs hex digits
+           
             if i + num_fs > len(encoded):
                 raise ValueError("Invalid encoding: incomplete multi-nibble code")
             
